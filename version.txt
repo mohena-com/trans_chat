@@ -1,0 +1,6 @@
+# Environment Specification
+python==3.12.4
+
+# Dependencies
+torch>=2.2.0
+transformers>=4.40.0
