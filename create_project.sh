@@ -3,23 +3,23 @@ setlocal EnableDelayedExpansion
 
 title Transformer From Scratch - Project Generator v2.0
 
-echo.
+echo .
 echo ==============================================================
 echo        Build a Transformer From Scratch in PyTorch
 echo ==============================================================
-echo.
+echo .
 
 set PROJECT=transformer-from-scratch
 
 if exist "%PROJECT%" (
-    echo.
+    echo .
     echo ERROR: Folder "%PROJECT%" already exists.
     pause
     exit /b 1
 )
 
 echo Creating project...
-echo.
+echo .
 
 :: ============================================================================
 :: Root
@@ -317,14 +317,14 @@ type nul > playground\.gitkeep
 
 echo # Transformer From Scratch > README.md
 
-echo.
+echo .
 echo ==============================================================
 echo           Project Created Successfully!
 echo ==============================================================
-echo.
+echo .
 echo Project Location:
 echo %cd%
-echo.
+echo .
 echo Recommended Next Steps
 echo --------------------------------------------------------------
 echo 1. python -m venv .venv
@@ -333,5 +333,5 @@ echo 3. pip install -r requirements.txt
 echo 4. code .
 echo 5. git add .
 echo 6. git commit -m "Initial project structure"
-echo.
+echo .
 pause
