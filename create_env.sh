@@ -1,8 +1,8 @@
 # 1. Create the environment forced to exactly version 3.12.4
-conda create --prefix "/Volumes/Extreme SSD/webmaster-ai/AIML_POC/conda_env/trans_chat_env"    python=3.12.4 -y
+conda create --prefix "../conda_env/trans_chat_env"    python=3.12.4 -y
 
 # 2. Activate the environment
-conda activate "/Volumes/Extreme SSD/webmaster-ai/AIML_POC/conda_env/trans_chat_env"
+conda activate "../conda_env/trans_chat_env"
 
 # 3. Double-check that it successfully locked onto 3.12.4
 python --version
