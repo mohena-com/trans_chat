@@ -1,337 +1,323 @@
-@echo off
-setlocal EnableDelayedExpansion
-
-title Transformer From Scratch - Project Generator v2.0
-
-echo .
-echo ==============================================================
-echo        Build a Transformer From Scratch in PyTorch
-echo ==============================================================
-echo .
-
-set PROJECT=transformer-from-scratch
-
-if exist "%PROJECT%" (
-    echo .
-    echo ERROR: Folder "%PROJECT%" already exists.
-    pause
-    exit /b 1
-)
-
-echo Creating project...
-echo .
-
-:: ============================================================================
-:: Root
-:: ============================================================================
-
-mkdir "%PROJECT%"
-cd "%PROJECT%"
-
-type nul > README.md
-type nul > requirements.txt
-type nul > .gitignore
-type nul > LICENSE
-type nul > config.py
-
-:: ============================================================================
-:: Data
-:: ============================================================================
-
-mkdir data
-
-type nul > data\qa.csv
-type nul > data\train.csv
-type nul > data\validation.csv
-type nul > data\test.csv
-
-:: ============================================================================
-:: Tokenizer
-:: ============================================================================
-
-mkdir tokenizer
-
-type nul > tokenizer\__init__.py
-type nul > tokenizer\vocabulary.py
-type nul > tokenizer\tokenizer.py
-type nul > tokenizer\utils.py
-
-:: ============================================================================
-:: Dataset
-:: ============================================================================
-
-mkdir dataset
-
-type nul > dataset\__init__.py
-type nul > dataset\dataset.py
-type nul > dataset\dataloader.py
-type nul > dataset\preprocessing.py
-
-:: ============================================================================
-:: Model
-:: ============================================================================
-
-mkdir model
-
-type nul > model\__init__.py
-type nul > model\embedding.py
-type nul > model\positional_encoding.py
-type nul > model\attention.py
-type nul > model\multi_head_attention.py
-type nul > model\feed_forward.py
-type nul > model\layer_norm.py
-type nul > model\encoder_layer.py
-type nul > model\encoder.py
-type nul > model\decoder_layer.py
-type nul > model\decoder.py
-type nul > model\transformer.py
-type nul > model\masks.py
+#!/bin/bash
+
+###############################################################################
+# Build a Transformer From Scratch in PyTorch
+# Project Generator v2.0 (macOS/Linux)
+###############################################################################
+
+set -e
+
+PROJECT="transformer-from-scratch"
+
+echo
+echo "=============================================================="
+echo " Build a Transformer From Scratch in PyTorch"
+echo "=============================================================="
+echo
+
+if [ -d "$PROJECT" ]; then
+    echo "ERROR: Folder '$PROJECT' already exists."
+    exit 1
+fi
+
+echo "Creating project..."
+
+###############################################################################
+# Root
+###############################################################################
+
+mkdir -p "$PROJECT"
+cd "$PROJECT"
+
+touch README.md
+touch ROADMAP.md
+touch CHANGELOG.md
+touch CONTRIBUTING.md
+touch requirements.txt
+touch .gitignore
+touch LICENSE
+touch config.py
+
+###############################################################################
+# Data
+###############################################################################
+
+mkdir -p data
+
+touch data/qa.csv
+touch data/train.csv
+touch data/validation.csv
+touch data/test.csv
+
+###############################################################################
+# Tokenizer
+###############################################################################
+
+mkdir -p tokenizer
+
+touch tokenizer/__init__.py
+touch tokenizer/vocabulary.py
+touch tokenizer/tokenizer.py
+touch tokenizer/utils.py
+
+###############################################################################
+# Dataset
+###############################################################################
+
+mkdir -p dataset
+
+touch dataset/__init__.py
+touch dataset/dataset.py
+touch dataset/dataloader.py
+touch dataset/preprocessing.py
 
-:: ============================================================================
-:: Trainer
-:: ============================================================================
+###############################################################################
+# Model
+###############################################################################
 
-mkdir trainer
+mkdir -p model
+
+touch model/__init__.py
+touch model/embedding.py
+touch model/positional_encoding.py
+touch model/attention.py
+touch model/multi_head_attention.py
+touch model/feed_forward.py
+touch model/layer_norm.py
+touch model/encoder_layer.py
+touch model/encoder.py
+touch model/decoder_layer.py
+touch model/decoder.py
+touch model/transformer.py
+touch model/masks.py
 
-type nul > trainer\__init__.py
-type nul > trainer\loss.py
-type nul > trainer\optimizer.py
-type nul > trainer\trainer.py
-type nul > trainer\metrics.py
-type nul > trainer\checkpoint.py
+###############################################################################
+# Trainer
+###############################################################################
 
-:: ============================================================================
-:: Inference
-:: ============================================================================
+mkdir -p trainer
 
-mkdir inference
+touch trainer/__init__.py
+touch trainer/loss.py
+touch trainer/optimizer.py
+touch trainer/trainer.py
+touch trainer/metrics.py
+touch trainer/checkpoint.py
 
-type nul > inference\__init__.py
-type nul > inference\greedy.py
-type nul > inference\beam_search.py
-type nul > inference\predict.py
+###############################################################################
+# Inference
+###############################################################################
 
-:: ============================================================================
-:: Visualization
-:: ============================================================================
+mkdir -p inference
 
-mkdir visualization
+touch inference/__init__.py
+touch inference/greedy.py
+touch inference/beam_search.py
+touch inference/predict.py
 
-type nul > visualization\__init__.py
-type nul > visualization\attention_heatmap.py
-type nul > visualization\embedding_plot.py
-type nul > visualization\positional_plot.py
-type nul > visualization\tensor_shapes.py
-type nul > visualization\model_graph.py
+###############################################################################
+# Visualization
+###############################################################################
 
-:: ============================================================================
-:: Chatbot
-:: ============================================================================
+mkdir -p visualization
 
-mkdir chatbot
-mkdir chatbot\templates
+touch visualization/__init__.py
+touch visualization/attention_heatmap.py
+touch visualization/embedding_plot.py
+touch visualization/positional_plot.py
+touch visualization/tensor_shapes.py
+touch visualization/model_graph.py
 
-type nul > chatbot\app.py
-type nul > chatbot\api.py
+###############################################################################
+# Chatbot
+###############################################################################
 
-:: ============================================================================
-:: Assets
-:: ============================================================================
+mkdir -p chatbot/templates
 
-mkdir assets
-mkdir assets\images
-mkdir assets\gifs
+touch chatbot/app.py
+touch chatbot/api.py
 
-:: ============================================================================
-:: Logs
-:: ============================================================================
+###############################################################################
+# Assets
+###############################################################################
 
-mkdir logs
-type nul > logs\.gitkeep
+mkdir -p assets/images
+mkdir -p assets/gifs
 
-:: ============================================================================
-:: Outputs
-:: ============================================================================
+touch assets/images/.gitkeep
+touch assets/gifs/.gitkeep
 
-mkdir outputs
-mkdir outputs\attention
-mkdir outputs\embeddings
-mkdir outputs\plots
+###############################################################################
+# Outputs
+###############################################################################
 
-type nul > outputs\attention\.gitkeep
-type nul > outputs\embeddings\.gitkeep
-type nul > outputs\plots\.gitkeep
+mkdir -p outputs/attention
+mkdir -p outputs/embeddings
+mkdir -p outputs/plots
 
-:: ============================================================================
-:: Saved Models
-:: ============================================================================
+touch outputs/attention/.gitkeep
+touch outputs/embeddings/.gitkeep
+touch outputs/plots/.gitkeep
 
-mkdir saved_models
-type nul > saved_models\.gitkeep
+###############################################################################
+# Logs
+###############################################################################
 
-:: ============================================================================
-:: Checkpoints
-:: ============================================================================
+mkdir -p logs
+touch logs/.gitkeep
 
-mkdir checkpoints
-type nul > checkpoints\.gitkeep
+###############################################################################
+# Saved Models
+###############################################################################
 
-:: ============================================================================
-:: Scripts
-:: ============================================================================
+mkdir -p saved_models
+touch saved_models/.gitkeep
 
-mkdir scripts
+###############################################################################
+# Checkpoints
+###############################################################################
 
-:: ============================================================================
-:: Examples
-:: ============================================================================
+mkdir -p checkpoints
+touch checkpoints/.gitkeep
 
-mkdir examples
+###############################################################################
+# Scripts
+###############################################################################
 
-:: ============================================================================
-:: Documentation
-:: ============================================================================
+mkdir -p scripts
 
-mkdir docs
+###############################################################################
+# Examples
+###############################################################################
 
-:: ============================================================================
-:: Configurations
-:: ============================================================================
+mkdir -p examples
 
-mkdir configs
+###############################################################################
+# Docs
+###############################################################################
 
-type nul > configs\default.yaml
-type nul > configs\train.yaml
-type nul > configs\model.yaml
+mkdir -p docs
+touch docs/.gitkeep
 
-:: ============================================================================
-:: Utilities
-:: ============================================================================
+###############################################################################
+# Configs
+###############################################################################
 
-mkdir utils
+mkdir -p configs
 
-type nul > utils\__init__.py
-type nul > utils\logger.py
-type nul > utils\device.py
-type nul > utils\seed.py
-type nul > utils\timer.py
-type nul > utils\helpers.py
+touch configs/default.yaml
+touch configs/model.yaml
+touch configs/train.yaml
 
-:: ============================================================================
-:: Custom Losses
-:: ============================================================================
+###############################################################################
+# Utils
+###############################################################################
 
-mkdir losses
+mkdir -p utils
 
-type nul > losses\__init__.py
+touch utils/__init__.py
+touch utils/logger.py
+touch utils/device.py
+touch utils/seed.py
+touch utils/timer.py
+touch utils/helpers.py
 
-:: ============================================================================
-:: Custom Optimizers
-:: ============================================================================
+###############################################################################
+# Losses
+###############################################################################
 
-mkdir optimizers
+mkdir -p losses
+touch losses/__init__.py
 
-type nul > optimizers\__init__.py
+###############################################################################
+# Optimizers
+###############################################################################
 
-:: ============================================================================
-:: LR Schedulers
-:: ============================================================================
+mkdir -p optimizers
+touch optimizers/__init__.py
 
-mkdir schedulers
+###############################################################################
+# Schedulers
+###############################################################################
 
-type nul > schedulers\__init__.py
+mkdir -p schedulers
+touch schedulers/__init__.py
 
-:: ============================================================================
-:: Playground
-:: ============================================================================
+###############################################################################
+# Playground
+###############################################################################
 
-mkdir playground
+mkdir -p playground
+touch playground/playground.py
 
-type nul > playground\playground.py
+###############################################################################
+# Experiments
+###############################################################################
 
-:: ============================================================================
-:: Experiments
-:: ============================================================================
+mkdir -p experiments
+touch experiments/README.md
 
-mkdir experiments
+###############################################################################
+# Benchmarks
+###############################################################################
 
-type nul > experiments\README.md
+mkdir -p benchmarks
+touch benchmarks/README.md
 
-:: ============================================================================
-:: Benchmarks
-:: ============================================================================
+###############################################################################
+# Papers
+###############################################################################
 
-mkdir benchmarks
+mkdir -p papers
+touch papers/README.md
 
-type nul > benchmarks\README.md
+###############################################################################
+# Notebook Archive
+###############################################################################
 
-:: ============================================================================
-:: Papers
-:: ============================================================================
+mkdir -p notebooks_archive
+touch notebooks_archive/README.md
 
-mkdir papers
+###############################################################################
+# Tests
+###############################################################################
 
-type nul > papers\README.md
+mkdir -p tests
+touch tests/__init__.py
 
-:: ============================================================================
-:: Notebook Archive (Optional)
-:: ============================================================================
+###############################################################################
+# VS Code
+###############################################################################
 
-mkdir notebooks_archive
+mkdir -p .vscode
 
-type nul > notebooks_archive\README.md
+touch .vscode/settings.json
+touch .vscode/launch.json
 
-:: ============================================================================
-:: Tests
-:: ============================================================================
+###############################################################################
+# Git
+###############################################################################
 
-mkdir tests
+git init
 
-type nul > tests\__init__.py
+###############################################################################
+# Finish
+###############################################################################
 
-:: ============================================================================
-:: VS Code
-:: ============================================================================
+echo "# Transformer From Scratch" > README.md
 
-mkdir .vscode
-
-type nul > .vscode\settings.json
-type nul > .vscode\launch.json
-
-:: ============================================================================
-:: Git
-:: ============================================================================
-
-git init >nul 2>nul
-
-:: ============================================================================
-:: .gitkeep Files
-:: ============================================================================
-
-type nul > assets\images\.gitkeep
-type nul > assets\gifs\.gitkeep
-type nul > docs\.gitkeep
-type nul > examples\.gitkeep
-type nul > scripts\.gitkeep
-type nul > playground\.gitkeep
-
-echo # Transformer From Scratch > README.md
-
-echo .
-echo ==============================================================
-echo           Project Created Successfully!
-echo ==============================================================
-echo .
-echo Project Location:
-echo %cd%
-echo .
-echo Recommended Next Steps
-echo --------------------------------------------------------------
-echo 1. python -m venv .venv
-echo 2. .venv\Scripts\activate
-echo 3. pip install -r requirements.txt
-echo 4. code .
-echo 5. git add .
-echo 6. git commit -m "Initial project structure"
-echo .
-pause
+echo
+echo "=============================================================="
+echo "Project created successfully!"
+echo "=============================================================="
+echo
+echo "Location:"
+pwd
+echo
+echo "Next Steps:"
+echo "------------------------------------------"
+echo "python3 -m venv .venv"
+echo "source .venv/bin/activate"
+echo "pip install -r requirements.txt"
+echo "code ."
+echo
